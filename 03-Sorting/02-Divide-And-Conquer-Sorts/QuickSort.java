@@ -1,52 +1,61 @@
 import java.util.Arrays;
 
 /**
- * 📌 Problem: Quick Sort
- * ⚡ Difficulty: Medium
- * 💡 Pattern: Divide and Conquer
+ * Problem: Quick Sort
+ * Difficulty: Medium
+ * Pattern: DIvide and Conquer - partition around a pivot, then recurse
+ * Approach:
+ * 1. Pick a "pivot" element from the array (here, we pick the first element of
+ * the current range)
+ * 2. Partition: rearrange the array so that all elements smaller than the pivot
+ * end up on its left, and all elements greater end up on its right.
+ * After partioning, pivot is ints final correct sorted position
+ * 3. Recursively apply the same process to the left part (elements smaller than
+ * pivot) and the right part (elements greater than pivot).
+ * 4. Base case: a sub-array of size 1 or 0 is already sorted - stop recursing.
+ * 5. Unlike Merge Sort, there's no separate "merge" step - the array is sorted
+ * in-place purely through partitioning.
  * 
- * 🔍 Description:
- * Selects a 'pivot' element and partitions the array such that elements smaller than the 
- * pivot are moved to its left, and elements greater are moved to its right. It then 
- * recursively sorts the left and right sub-arrays. This is done in-place.
- * 
- * 📈 Complexity Analysis:
- * - Time Complexity:
- *   - Average Case: O(N log N) -> When the pivot splits the array relatively evenly.
- *   - Worst Case: O(N^2) -> When the pivot is consistently the smallest or largest element (e.g. sorted input).
- * - Space Complexity: O(log N) -> Average depth of the recursion call stack.
+ * Time Complexity:
+ * Average case: 0(nlogn) - pivot roughly splits array in half each time.
+ * Worst case: 0(n^2): happens when pivot is always the smallest or largest
+ * element
+ * (e.g. already sorted array with the first-element pivot), casuing very
+ * unbalanced splits.
+ * Space Complexity: 0(log n) - no extra array needed (unline Merge Sort), but
+ * recursion call stack uses 0(log n) space on average (0(n) worst case).
  */
 
 public class QuickSort {
 
     static void quickSort(int[] arr, int low, int high) {
-        // Base Case: Sub-array of size 1 or 0 is already sorted
+        // base case: a sub-array of size 1 (or 0) is already sorted
         if (low >= high) {
             return;
         }
 
         int pivotIndex = partition(arr, low, high);
 
-        quickSort(arr, low, pivotIndex - 1);  // Sort the left part recursively
-        quickSort(arr, pivotIndex + 1, high); // Sort the right part recursively
+        quickSort(arr, low, pivotIndex - 1); // sort left part
+        quickSort(arr, pivotIndex + 1, high); // sort right part
     }
 
-    static int partition(int[] arr, int low, int high) {
+    static int partition(int arr[], int low, int high) {
         int pivot = arr[low];
         int i = low;
         int j = high;
 
         while (i < j) {
-            // Find the first element greater than the pivot from the left
+            // move i right until we find an element greater than pivot
             while (arr[i] <= pivot && i < high) {
                 i++;
             }
-            // Find the first element smaller than or equal to the pivot from the right
+            // move j left until we find an element smaller than or equal to pivot
             while (arr[j] > pivot) {
                 j--;
             }
 
-            // Swap them if pointers haven't crossed
+            // if i is still left of j, swap them (both are out of place)
             if (i < j) {
                 int temp = arr[i];
                 arr[i] = arr[j];
@@ -54,19 +63,20 @@ public class QuickSort {
             }
         }
 
-        // Place the pivot in its correct sorted position
+        // place pivot in its correct final position (at index j)
         int temp = arr[low];
         arr[low] = arr[j];
         arr[j] = temp;
 
-        return j; // Return the final index of the pivot
+        return j; // pivot's final index
     }
 
     public static void main(String[] args) {
-        int[] arr = {64, 25, 12, 22, 11};
+        int[] arr = { 64, 25, 12, 22, 11 };
 
         quickSort(arr, 0, arr.length - 1);
 
         System.out.println(Arrays.toString(arr));
+        // Expected output: [11,12,22,25,64];
     }
 }

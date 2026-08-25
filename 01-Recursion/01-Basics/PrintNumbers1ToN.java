@@ -1,36 +1,35 @@
-/**
- * 📌 Problem: Print Numbers from 1 to N using Recursion
- * ⚡ Difficulty: Easy
- * 💡 Pattern: Head Recursion (Action after recursive call)
+/** 
+ * Problem: Print Numbers from 1 to N using Recursion
+ * Difficulty: Easy 
+ * Pattern: Basic Recursion (Head Recursion)
  * 
- * 🔍 Approach:
- * - Base Case: If n is 0, stop recursion.
- * - Recursive Step: Call the function with (n - 1) first, and then print the current number.
- *   Since the print happens *after* the recursive call returns, numbers are printed in increasing order (1 to N).
+ * Approach: 
+ * - Base case: if n == 0, stop recursion
+ * - Recursive case: call the function first with (n-1), THEN print n
+ * - Since the print happens AFTER the recursive call, numbers get printed
+ * in increasing order (1,2,3,....,N) as the calls return 
  * 
- * 📈 Complexity Analysis:
- * - Time Complexity: O(N) -> We make N recursive calls.
- * - Space Complexity: O(N) -> The recursion stack holds N active function calls.
+ * Time Complexity: 0(N) -> one call per value from N down to 1 
+ * Space Complexity: 0(N) -> recursion stack holds N pending calls 
  */
 
 public class PrintNumbers1ToN {
     public static void printNumbers(int n) {
-        // Base Case: Stop recursion when n reaches 0
+        // base case 
         if (n == 0) {
-            return;
+            return ;
         }
+        // recursive case (called BEFORE printing)
+        printNumbers(n-1); 
 
-        // Recursive Step: Go deeper first to print smaller numbers first
-        printNumbers(n - 1); 
-
-        // Action: Print the current number after returning from deeper calls
+        // work done AFTER the recursive call returns
         System.out.print(n + " "); 
     }
 
     public static void main(String[] args) {
         int n = 5; 
         printNumbers(n); 
+
+        // Output: 1 2 3 4 5
     }
 }
-
-// Expected Output: 1 2 3 4 5

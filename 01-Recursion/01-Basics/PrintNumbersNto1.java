@@ -1,36 +1,36 @@
 /**
- * 📌 Problem: Print Numbers from N to 1 using Recursion
- * ⚡ Difficulty: Easy
- * 💡 Pattern: Tail Recursion (Action before recursive call)
- * 
- * 🔍 Approach:
- * - Base Case: If n is 0, stop recursion.
- * - Recursive Step: Print the current number first, then call the function with (n - 1).
- *   Since the print happens *before* the recursive call, numbers are printed in decreasing order (N to 1).
- * 
- * 📈 Complexity Analysis:
- * - Time Complexity: O(N) -> We make N recursive calls.
- * - Space Complexity: O(N) -> The recursion stack holds N active function calls.
+ * Problem: Print Numbers from N to 1 using Recursion
+ * Difficulty: Easy
+ * Pattern: Basic Recursion (Tail Recursion)
+ *
+ * Approach:
+ * - Base case: if n == 0, stop recursion
+ * - Recursive case: print n FIRST, THEN call the function with (n - 1)
+ * - Since the print happens BEFORE the recursive call, numbers get printed
+ *   in decreasing order (N, N-1, ..., 1) as each call runs
+ *
+ * Time Complexity: O(N) -> one call per value from N down to 1
+ * Space Complexity: O(N) -> recursion stack holds N pending calls
  */
-
 public class PrintNumbersNTo1 {
+
     public static void printNumbers(int n) {
-        // Base Case: Stop recursion when n reaches 0
+        // base case
         if (n == 0) {
             return;
         }
 
-        // Action: Print current number before going deeper
+        // work done BEFORE the recursive call
         System.out.print(n + " ");
 
-        // Recursive Step: Call function with (n - 1)
+        // recursive case (called AFTER printing)
         printNumbers(n - 1);
     }
 
     public static void main(String[] args) {
         int n = 5;
         printNumbers(n);
+
+        // Output: 5 4 3 2 1
     }
 }
-
-// Expected Output: 5 4 3 2 1

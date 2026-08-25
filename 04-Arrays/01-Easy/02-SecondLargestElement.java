@@ -1,25 +1,24 @@
 /**
- * 📌 Problem: Find the Second Largest Element in an Array
- * ⚡ Difficulty: Easy
- * 💡 Pattern: Single Pass / Linear Scan
+ * Problem: Second Largest Element in the Array
+ * Pattern: Single Pass / Linear Scan
  * 
- * 🔍 Description:
- * Keeps track of both `largest` and `secondLargest` elements during a single scan.
- * If the current element is larger than `largest`, then `largest` is updated, and the old 
- * `largest` becomes the `secondLargest`. Otherwise, if it is larger than `secondLargest` 
- * and not equal to `largest`, we update `secondLargest`.
+ * Optimal Approach:
+ * keep two variables, 'largest' and 'secondLargest'.
+ * Traverse once:
+ * - If current element > largest, then secondLargest = largest, and largest =
+ * current element.
+ * - Else if current element > secondLargest AND current element != Largest,
+ * then secondLargest = current element.
  * 
- * 📈 Complexity Analysis:
- * - Time Complexity: O(N) -> Single pass through the array.
- * - Space Complexity: O(1) -> Uses constant extra space.
+ * Time Complexity: 0(N)
+ * Space Complexity: 0(1)
  */
 
 class SecondLargestElement {
 
     public static int findSecondLargest(int[] arr) {
-        // Edge Case: Array must have at least 2 elements
         if (arr == null || arr.length < 2) {
-            return -1; 
+            return -1; // not enough elements for a second largest
         }
 
         int largest = arr[0];   
@@ -37,7 +36,8 @@ class SecondLargestElement {
     }
 
     public static void main(String[] args) {
-        int[] arr = {12, 35, 1, 10, 34, 1};
+        int[] arr = { 12, 35, 1, 10, 34, 1 };
         System.out.println(findSecondLargest(arr));
+        // Expected output: 34
     }
 }
