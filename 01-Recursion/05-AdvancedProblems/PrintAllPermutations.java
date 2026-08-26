@@ -30,7 +30,7 @@ public class PrintAllPermutations {
         if (start == arr.length) {
             List<Integer> current = new ArrayList<>(); 
             for (int num: arr) {
-                cirrent.add(num); 
+                current.add(num); 
             }
             result.add(current); 
             return; 
