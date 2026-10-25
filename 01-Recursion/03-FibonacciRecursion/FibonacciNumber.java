@@ -1,50 +1,40 @@
-/**
- * Problem: Find the Nth Fibonacci Number using Recursion
- * Difficulty: Easy 
- * Pattern: Multiple Recursion (calls itself twice per call)
- * 
- * What is the Fibonacci Sequence? 
- * Each number is the sum of the two numbers before it. 
- * 0, 1, 1, 2, 3, 5, 8, 13, 21,......
- * fib(0) = 0, fib(1) = 1, fib(n) = fib(n-1) + fib(n-2)
- * 
- * Approach: 
- * - Base case: if n == 0, return 0. If n == 1, return 1
- * - Recursive case: return fib(n-1) + fib(n-2)
- * - Unlike previous problems, this makes TWO recursive calls per call, not one- this is called "multiple recursion"
- */ 
+// Problem: Find the Nth Fibonacci Number
+// Brute Force (Recursion): Time O(2^N), Space O(N)
+// Optimal (Iterative): Time O(N), Space O(1)
 
 public class FibonacciNumber {
-    public static int fib(int n) {
-        // base cases 
-        if (n == 0) {
-            return 0; 
+
+    // 1. Recursive Approach (As introduced in basic recursion)
+    public static int fibRecursive(int n) {
+        // Base cases
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+
+        // Sum of the previous two numbers
+        return fibRecursive(n - 1) + fibRecursive(n - 2);
+    }
+
+    // 2. Optimal Iterative Approach (Constant space)
+    public static int fibOptimal(int n) {
+        if (n <= 0) return 0;
+        if (n == 1) return 1;
+
+        int prev2 = 0; // fib(0)
+        int prev1 = 1; // fib(1)
+
+        for (int i = 2; i <= n; i++) {
+            int current = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = current;
         }
-        if (n == 1) {
-            return 1; 
-        }
-        // recursive case: sum of previous two fibonacci numbers 
-        return fib(n-1) + fib(n-2);
+
+        return prev1;
     }
 
     public static void main(String[] args) {
-        int n = 6; 
-        int result = fib(n); 
-        System.out.println("Fibonacci number at position " + n + " is: " + result);
+        int n = 6;
 
-        // Output: Fibonacci number at position 6 is: 8
+        System.out.println("Using Recursion: " + fibRecursive(n));
+        System.out.println("Using Optimal Loop: " + fibOptimal(n));
     }
 }
-
-
-/**
- * fib(4)
-├── fib(3)
-│   ├── fib(2)
-│   │   ├── fib(1) → 1
-│   │   └── fib(0) → 0
-│   └── fib(1) → 1
-└── fib(2)
-    ├── fib(1) → 1
-    └── fib(0) → 0
- */
