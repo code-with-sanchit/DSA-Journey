@@ -1,44 +1,28 @@
-/**
- * Problem: Sum of First N Numbers using Recursion
- * Difficulty: Easy 
- * Pattern: Basic Recursion (Tail Recursion style)
- * 
- * Approach: 
- * - Base case: if n == 0, return 0 (sum of nothing is 0)
- * - Recursive case: return n + sum of first (n-1) numbers 
- * - Each call adds the current n to the result of the smaller subproblem 
- * 
- * Time Complexity: 0(N) -> one call per value from N down to 0 
- * Space Complexity: 0(N) -> recursion stack holds N pending calls
- */
-
+// Problem: Sum of first N natural numbers
+// Recursive: Time O(N), Space O(N) | Optimal (Formula): Time O(1), Space O(1)
 
 public class SumOfFirstNNumbers {
-    
-    public static int sum(int n) {
-        // base case 
-        if (n == 0) {
+
+    // 1. Recursive Approach
+    public static int sumRecursive(int n) {
+        // Base case: sum of 0 numbers is 0
+        if (n <= 0) {
             return 0;
         }
-        // recursive case: n + sum of remaining (n - 1) numbers 
-        return n + sum(n - 1);
+
+        // Add current n to sum of previous numbers
+        return n + sumRecursive(n - 1);
+    }
+
+    // 2. Optimal Approach (Math Formula)
+    public static int sumFormula(int n) {
+        return (n * (n + 1)) / 2;
     }
 
     public static void main(String[] args) {
-        int n = 5; 
-        int result = sum(n); 
-        System.out.println("Sum of first" + n + "numbers: " + result);
+        int n = 5;
 
-        // Output: Sum of first 5 numbers: 15 
-        // (5 + 4 + 3 + 2 + 1 = 15)
+        System.out.println("Using Recursion: " + sumRecursive(n));
+        System.out.println("Using Formula: " + sumFormula(n));
     }
 }
-
-/**
- * sum(5) = 5 + sum(4)
- *        = 5 + (4 + sum(3))
- *        = 5 + (4 + (3 + sum(2)))
- *        = 5 + (4 + (3 + (2 + (1 + sum(0)))))
- *        = 5 + (4 + (3 + (2 + (1 + 0)))
- *        = 15
- */
