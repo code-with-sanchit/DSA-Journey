@@ -1,48 +1,49 @@
-/**
- * Problem: GCD (Greatest Common Divisor) of Two Numbers using Recursion 
- * Difficulty: Easy 
- * Pattern: Math Recursion (Euclidean Algorithm)
- * 
- * What is GCD? 
- * The largest number that divides both given numbers exactly. 
- * Example: GCD(20,8) -> 4 (since 4 is the largest number dividing both)
- * 
- * Euclid's Algorithm (the key insight): 
- * GCD(a,b) = GCD(b, a % b)
- * Keep replacing (a,b) with (b, a % b) until b becomes 0. 
- * At that point, a itself is the GCD.
- * 
- * Approach: 
- * - Base case: if b == 0, return a (a is the GCD) 
- * - Recursive case: call gcd(b, a % b)
- * 
- * Time Complexity: 0(log(min(a,b))) -> much faster than checking every number up to min(a,b)
- * Space Complexity: 0(log(min(a,b))) -> recursion stack
- */
+// Problem: Find GCD (Greatest Common Divisor) of two numbers
+// Brute Force: Time O(min(a, b)), Space O(1)
+// Optimal (Euclidean): Time O(log(min(a, b))), Space O(1) iterative / O(log(min(a, b))) recursive
 
 public class GCDUsingRecursion {
-    
-    public static int gcd(int a, int b) {
-        // base case 
-        if (b == 0) {
-            return a; 
+
+    // 1. Brute Force Approach
+    public static int gcdBruteForce(int a, int b) {
+        int gcd = 1;
+        int limit = Math.min(a, b);
+
+        for (int i = limit; i >= 1; i--) {
+            if (a % i == 0 && b % i == 0) {
+                gcd = i;
+                break;
+            }
         }
-        // recursive case: replace (a,b) with (b,a%b)
-        return gcd(b,a % b);
+        return gcd;
+    }
+
+    // 2. Optimal Recursive Approach (Euclidean Algorithm)
+    public static int gcdRecursive(int a, int b) {
+        // Base case: when b becomes 0, a is the GCD
+        if (b == 0) {
+            return a;
+        }
+
+        // Euclid's formula: GCD(a, b) = GCD(b, a % b)
+        return gcdRecursive(b, a % b);
+    }
+
+    // 3. Optimal Iterative Approach (Euclidean Algorithm)
+    public static int gcdIterative(int a, int b) {
+        while (b != 0) {
+            int remainder = a % b;
+            a = b;
+            b = remainder;
+        }
+        return a;
     }
 
     public static void main(String[] args) {
-        int a = 20, b = 8; 
-        int result = gcd(a,b); 
-        System.out.println("GCD of " + a + " and " + b + " is: " + result);
+        int a = 20, b = 8;
 
-        // Output: GCD of 20 and 8 is 4
+        System.out.println("Brute Force: " + gcdBruteForce(a, b));
+        System.out.println("Optimal Recursive: " + gcdRecursive(a, b));
+        System.out.println("Optimal Iterative: " + gcdIterative(a, b));
     }
 }
-
-/**
- * gcd(20, 8)
-= gcd(8, 20 % 8)   → gcd(8, 4)
-= gcd(4, 8 % 4)    → gcd(4, 0)
-= b is 0, so return a → 4
- */
