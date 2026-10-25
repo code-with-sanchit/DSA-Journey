@@ -1,45 +1,52 @@
-/**
- * Problem: Check if a String is a Palindrome using Recursion
- * Difficulty: Easy
- * Pattern: Array/String Recursion (Two-Pointer style)
- *
- * What is a Palindrome?
- * A string that reads the same forwards and backwards.
- * Example: "madam" -> same reversed. "hello" -> not the same reversed.
- *
- * Approach:
- * - Use two pointers: one starting from the left (start), one from the right (end)
- * - Base case: if start >= end, the whole string has been checked -> it's a palindrome
- * - If characters at start and end don't match -> not a palindrome, return false immediately
- * - Recursive case: move start forward (+1) and end backward (-1), check again
- *
- * Time Complexity: O(N/2) -> O(N) -> checks roughly half the characters
- * Space Complexity: O(N) -> recursion stack depth
- */
+// Problem: Check if a String is a Palindrome
+// Iterative: Time O(N), Space O(1) | Recursive: Time O(N), Space O(N)
+
 public class CheckPalindromeString {
 
-    public static boolean isPalindrome(String str, int start, int end) {
-        // base case: pointers have met or crossed -> all characters matched
+    // 1. Recursive Helper Function
+    private static boolean checkRecursive(String str, int start, int end) {
+        // Base case: pointers have met or crossed
         if (start >= end) {
             return true;
         }
 
-        // mismatch found -> not a palindrome
+        // Characters at current positions do not match
         if (str.charAt(start) != str.charAt(end)) {
             return false;
         }
 
-        // recursive case: move both pointers inward
-        return isPalindrome(str, start + 1, end - 1);
+        // Move pointers inward
+        return checkRecursive(str, start + 1, end - 1);
+    }
+
+    // Public wrapper for clean recursive usage
+    public static boolean isPalindromeRecursive(String str) {
+        if (str == null) return false;
+        return checkRecursive(str, 0, str.length() - 1);
+    }
+
+    // 2. Optimal Iterative Approach (Two-Pointer Loop)
+    public static boolean isPalindromeIterative(String str) {
+        if (str == null) return false;
+
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 
     public static void main(String[] args) {
         String s1 = "madam";
-        System.out.println(s1 + " is palindrome: " + isPalindrome(s1, 0, s1.length() - 1));
-        // Output: madam is palindrome: true
-
         String s2 = "hello";
-        System.out.println(s2 + " is palindrome: " + isPalindrome(s2, 0, s2.length() - 1));
-        // Output: hello is palindrome: false
+
+        System.out.println(s1 + " (Recursive): " + isPalindromeRecursive(s1));
+        System.out.println(s2 + " (Iterative): " + isPalindromeIterative(s2));
     }
 }
