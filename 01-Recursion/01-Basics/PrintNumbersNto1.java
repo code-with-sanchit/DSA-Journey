@@ -1,7 +1,7 @@
 // Problem: Print N to 1 using recursion (Tail Recursion)
 // Time: O(N) | Space: O(N) (call stack)
 
-public class PrintNumbersNTo1 {
+class PrintNumbersNTo1 {
 
     public static void printNumbers(int n) {
         // Base case: stop when n reaches 0 or less
