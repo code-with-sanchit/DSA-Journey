@@ -1,44 +1,56 @@
-/**
- * Problem: Reverse an Array using Recursion 
- * Difficulty: Easy 
- * Pattern: Array Recursion (Two-Pointer style)
- * 
- * Approach: 
- * - Same two-pointer idea as CheckPallindromeString - one pointer from the start, one from the en 
- * - Base case: if start >= end, the whole array has been swapper -> stop 
- * - Recursive case: swap arr[start] and arr[end], then move both pointers inward (start + 1, end - 1) and recurse 
- * 
- * Time Complexity: 0(N/2) -> 0(N) -> visits roughly half the array (each call handles 2 elements)
- * Space Complexity: 0(N) -> recursion stack depth 
- */
+// Problem: Reverse an Array
+// Iterative: Time O(N), Space O(1) | Recursive: Time O(N), Space O(N)
+
+import java.util.Arrays;
 
 public class ReverseAnArray {
-    
-    public static void reverse(int[] arr, int start, int end) {
-        // base case: pointers have met or crossed -> fully reversed 
+
+    // 1. Recursive Helper Function
+    private static void reverseRecursiveHelper(int[] arr, int start, int end) {
+        // Base case: pointers meet or cross
         if (start >= end) {
-            return; 
+            return;
         }
 
-        // swap current pair 
-        int temp = arr[start]; 
-        arr[start] = arr[end]; 
-        arr[end] = temp; 
+        // Swap elements at start and end
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
 
-        // recursive case: move both pointers inward 
-        reverse(arr, start + 1, end - 1);
+        // Recursive call with inward pointers
+        reverseRecursiveHelper(arr, start + 1, end - 1);
+    }
+
+    // Public wrapper for clean recursive usage
+    public static void reverseRecursive(int[] arr) {
+        if (arr == null || arr.length <= 1) return;
+        reverseRecursiveHelper(arr, 0, arr.length - 1);
+    }
+
+    // 2. Optimal Iterative Approach (Two-Pointer Loop)
+    public static void reverseIterative(int[] arr) {
+        if (arr == null || arr.length <= 1) return;
+
+        int start = 0;
+        int end = arr.length - 1;
+
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
+        }
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5}; 
+        int[] arr1 = {1, 2, 3, 4, 5};
+        reverseRecursive(arr1);
+        System.out.println("Using Recursion: " + Arrays.toString(arr1));
 
-        reverse(arr, 0, arr.length-1); 
-
-        for (int num:arr) {
-            System.out.print(num + " ");
-        }
-
-        // Output: 5 4 3 2 1 
+        int[] arr2 = {10, 20, 30, 40};
+        reverseIterative(arr2);
+        System.out.println("Using Loop: " + Arrays.toString(arr2));
     }
-
 }
