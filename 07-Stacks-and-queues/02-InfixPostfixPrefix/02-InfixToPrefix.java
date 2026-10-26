@@ -82,4 +82,4 @@ class InfixToPrefix {
         System.out.println("Input: " + exp1);
         System.out.println("Output: " + optimalApproach(exp1)); 
     }
-} // The class ends here
+} 
