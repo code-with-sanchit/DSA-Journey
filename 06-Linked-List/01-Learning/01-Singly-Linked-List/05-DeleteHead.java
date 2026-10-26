@@ -1,0 +1,57 @@
+class Node {
+    int data; 
+    Node next; 
+    Node (int data, Node next) {
+        this.data = data; 
+        this.next = next;
+    }
+
+    Node(int data) {
+        this.data = data; 
+        this.next = null;
+    }
+}
+
+class DeleteHead {
+
+    static Node optimalApproach(Node head) {
+        if (head == null) {
+            return null;
+        }
+        return head.next;
+    }
+
+    static void printLL(Node head) {
+        Node temp = head; 
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        Node head1 = new Node(5);
+        head1.next = new Node(10);
+        head1.next.next = new Node(10);
+        System.out.println("Original List:");
+        printLL(head1);
+        head1 = optimalApproach(head1);
+        System.out.println("After deleting head:");
+        printLL(head1);
+
+        System.out.println("\nOriginal List (Single Node):");
+        Node head2 = new Node(100);
+        printLL(head2);
+        head2 = optimalApproach(head2);
+        System.out.println("After deleting head:");
+        printLL(head2);
+
+        System.out.println("\nOriginal List (Empty):");
+        Node head3 = null;
+        printLL(head3);
+        head3 = optimalApproach(head3);
+        System.out.println("After deleting head:");
+        printLL(head3);
+    }
+}
