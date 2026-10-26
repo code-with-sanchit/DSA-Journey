@@ -1,5 +1,3 @@
-import java.rmi.StubNotFoundException;
-
 class Node {
     int data; 
     Node next; 

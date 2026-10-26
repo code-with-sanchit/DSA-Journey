@@ -1,5 +1,10 @@
 import java.util.Stack; 
 
+/**
+ * Time Complexity: 0(N)
+ * Space Complexity: 0(N)
+ */
+
 class InfinixToPostfix {
 
     static int priority(char ch) {
