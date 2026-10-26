@@ -77,3 +77,8 @@ class IntroductionToLinkedList {
         System.out.println("Length: " + getLength(head3));
     }
 }
+
+/**
+ * Time Complexity: 0(N) where N is the number of elements
+ * Space Complexity: 0(N) to store the N nodes in memory
+ */
