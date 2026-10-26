@@ -39,3 +39,8 @@ class SearchInLinkedList{
         System.out.println("Search for 20: " + optimalApproach(head, 20)); // Expected: 0
     }
 }
+
+/**
+ * TC: O(N) in the worst case (if target is at the end or not found)
+ * SC: O(1) no extra memory used
+ */

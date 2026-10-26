@@ -37,3 +37,8 @@ class LengthOfLinkedList {
         System.out.println("Length: " + optimalApproach(head));
     }
 }
+
+/**
+ * TC: O(N) where N is the number of nodes
+ * SC: O(1) because we only use one extra variable (count)
+ */
