@@ -46,3 +46,8 @@ class ConvertArrayToLinkedList {
         printLL(optimalApproach(arr2));
     }
 }
+
+/**
+ * TC: O(N) where N is the array length
+ * SC: O(N) to store the N nodes
+ */
