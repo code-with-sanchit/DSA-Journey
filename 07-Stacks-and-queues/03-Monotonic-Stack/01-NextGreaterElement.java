@@ -22,6 +22,10 @@ class NextGreaterElement {
         }
         return result;
     }
+/**
+ * TC: O(N^2) because of the nested loops.
+* SC: O(N) to store the answer.
+ */
 
     /** Optimal Appraoch */
     static int[] optimalApproach(int[] arr) {
@@ -46,6 +50,10 @@ class NextGreaterElement {
         }
         return result;
     }
+/**
+ * TC: 0(N) where N is the size of the array 
+ * SC: 0(N) for the stack and the result array
+ */
 
     public static void main(String[] args) {
         // Test Case 1: Mixed array
@@ -70,9 +78,3 @@ class NextGreaterElement {
 
 }
 
-
-
-/**
- * TC: 0(N) where N is the size of the array 
- * SC: 0(N) for the stack and the result array
- */
