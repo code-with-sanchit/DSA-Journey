@@ -1,26 +1,24 @@
-// Problem: Find the Nth Fibonacci Number
-// Brute Force (Recursion): Time O(2^N), Space O(N)
-// Optimal (Iterative): Time O(N), Space O(1)
-
 public class FibonacciNumber {
 
-    // 1. Recursive Approach (As introduced in basic recursion)
+    // Recursive Approach
     public static int fibRecursive(int n) {
-        // Base cases
         if (n <= 0) return 0;
         if (n == 1) return 1;
 
-        // Sum of the previous two numbers
         return fibRecursive(n - 1) + fibRecursive(n - 2);
     }
+    /*
+     * Time Complexity: O(2^N)
+     * Space Complexity: O(N)
+     */
 
-    // 2. Optimal Iterative Approach (Constant space)
+    // Optimal Iterative Approach
     public static int fibOptimal(int n) {
         if (n <= 0) return 0;
         if (n == 1) return 1;
 
-        int prev2 = 0; // fib(0)
-        int prev1 = 1; // fib(1)
+        int prev2 = 0;
+        int prev1 = 1;
 
         for (int i = 2; i <= n; i++) {
             int current = prev1 + prev2;
@@ -30,6 +28,10 @@ public class FibonacciNumber {
 
         return prev1;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int n = 6;
