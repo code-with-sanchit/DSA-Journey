@@ -1,16 +1,11 @@
-// Problem: Check if a number is an Armstrong number
-// Iterative: Time O(D), Space O(1) | Recursive: Time O(D), Space O(D)
-// (where D is the number of digits)
-
 public class ArmstrongNumber {
 
-    // Helper function to count total digits
     public static int countDigits(int n) {
         if (n == 0) return 0;
         return 1 + countDigits(n / 10);
     }
 
-    // 1. Recursive Approach
+    // Recursive Approach
     private static int sumOfPowersRecursive(int n, int totalDigits) {
         if (n == 0) {
             return 0;
@@ -27,8 +22,12 @@ public class ArmstrongNumber {
         int totalDigits = countDigits(n);
         return sumOfPowersRecursive(n, totalDigits) == n;
     }
+    /*
+     * Time Complexity: O(log10(N))
+     * Space Complexity: O(log10(N))
+     */
 
-    // 2. Iterative Approach (Standard loop method)
+    // Iterative Approach
     public static boolean isArmstrongIterative(int n) {
         if (n < 0) return false;
 
@@ -44,6 +43,10 @@ public class ArmstrongNumber {
 
         return sum == n;
     }
+    /*
+     * Time Complexity: O(log10(N))
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int n = 153;
