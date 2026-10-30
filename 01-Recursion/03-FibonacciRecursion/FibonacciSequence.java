@@ -1,25 +1,24 @@
-// Problem: Print Fibonacci Sequence up to N terms
-// Brute Force (Loop + Recursion): Time O(N * 2^N), Space O(N)
-// Optimal (Iterative Loop): Time O(N), Space O(1)
-
 public class FibonacciSequence {
 
-    // Helper: Nth Fibonacci using recursion
     private static int fibRecursive(int n) {
         if (n <= 0) return 0;
         if (n == 1) return 1;
         return fibRecursive(n - 1) + fibRecursive(n - 2);
     }
 
-    // 1. Recursive Approach (Calls recursive fib in a loop)
+    // Recursive Approach
     public static void printSequenceRecursive(int n) {
         for (int i = 0; i < n; i++) {
             System.out.print(fibRecursive(i) + " ");
         }
         System.out.println();
     }
+    /*
+     * Time Complexity: O(N * 2^N)
+     * Space Complexity: O(N)
+     */
 
-    // 2. Optimal Iterative Approach (Computes each term on the go)
+    // Optimal Iterative Approach
     public static void printSequenceOptimal(int n) {
         if (n <= 0) return;
 
@@ -40,6 +39,10 @@ public class FibonacciSequence {
         }
         System.out.println();
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int n = 8;
