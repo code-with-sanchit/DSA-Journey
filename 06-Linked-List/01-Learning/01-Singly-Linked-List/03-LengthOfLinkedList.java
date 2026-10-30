@@ -1,4 +1,3 @@
-
 class Node {
     int data;
     Node next;
@@ -27,6 +26,10 @@ class LengthOfLinkedList {
 
         return count;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         Node head = new Node(5);
@@ -37,8 +40,3 @@ class LengthOfLinkedList {
         System.out.println("Length: " + optimalApproach(head));
     }
 }
-
-/**
- * TC: O(N) where N is the number of nodes
- * SC: O(1) because we only use one extra variable (count)
- */
