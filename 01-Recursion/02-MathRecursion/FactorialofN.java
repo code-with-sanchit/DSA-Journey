@@ -1,20 +1,19 @@
-// Problem: Find Factorial of a number N
-// Iterative: Time O(N), Space O(1) | Recursive: Time O(N), Space O(N)
-
 public class FactorialofN {
 
-    // 1. Recursive Approach
+    // Recursive Approach
     public static long factorialRecursive(int n) {
-        // Base case: 0! = 1 and 1! = 1
         if (n <= 1) {
             return 1;
         }
 
-        // Multiply n with factorial of (n - 1)
         return n * factorialRecursive(n - 1);
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
-    // 2. Iterative Approach (Using a loop)
+    // Iterative Approach
     public static long factorialIterative(int n) {
         long result = 1;
 
@@ -24,6 +23,10 @@ public class FactorialofN {
 
         return result;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int n = 5;
