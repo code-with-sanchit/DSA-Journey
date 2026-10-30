@@ -1,4 +1,3 @@
-
 class Node {
     int data;
     Node next;
@@ -32,6 +31,10 @@ class IntroductionToLinkedList {
 
         return head;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     static void printLL(Node head) {
         Node temp = head;
@@ -77,8 +80,3 @@ class IntroductionToLinkedList {
         System.out.println("Length: " + getLength(head3));
     }
 }
-
-/**
- * Time Complexity: 0(N) where N is the number of elements
- * Space Complexity: 0(N) to store the N nodes in memory
- */
