@@ -22,12 +22,12 @@ class NextGreaterElement {
         }
         return result;
     }
-/**
- * TC: O(N^2) because of the nested loops.
-* SC: O(N) to store the answer.
- */
+    /*
+     * Time Complexity: O(N^2)
+     * Space Complexity: O(N)
+     */
 
-    /** Optimal Appraoch */
+    // Optimal Approach
     static int[] optimalApproach(int[] arr) {
         if (arr == null || arr.length == 0) {
             return new int[0];
@@ -50,31 +50,23 @@ class NextGreaterElement {
         }
         return result;
     }
-/**
- * TC: 0(N) where N is the size of the array 
- * SC: 0(N) for the stack and the result array
- */
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     public static void main(String[] args) {
-        // Test Case 1: Mixed array
         int[] arr1 = {4, 1, 2, 5};
         System.out.println("Input: " + Arrays.toString(arr1));
         System.out.println("Brute Force: " + Arrays.toString(bruteForce(arr1)));
         System.out.println("Optimal:     " + Arrays.toString(optimalApproach(arr1))); 
-        // Expected: [5, 2, 5, -1]
 
-        // Test Case 2: Strictly decreasing array
         int[] arr2 = {5, 4, 3, 2, 1};
         System.out.println("\nInput: " + Arrays.toString(arr2));
         System.out.println("Optimal:     " + Arrays.toString(optimalApproach(arr2))); 
-        // Expected: [-1, -1, -1, -1, -1]
 
-        // Test Case 3: Edge Case (Single Element)
         int[] arr3 = {10};
         System.out.println("\nInput: " + Arrays.toString(arr3));
         System.out.println("Optimal:     " + Arrays.toString(optimalApproach(arr3)));
-        // Expected: [-1]
     }
-
 }
-
