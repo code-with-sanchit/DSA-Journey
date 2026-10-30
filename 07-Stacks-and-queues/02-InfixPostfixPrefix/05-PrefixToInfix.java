@@ -32,30 +32,22 @@ class PrefixToInfix {
         }
         return stack.pop();
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     public static void main(String[] args) {
-        // Test Case 1: Simple prefix expression
         String exp1 = "*+abc";
         System.out.println("Input: " + exp1);
         System.out.println("Output: " + optimalApproach(exp1)); 
-        // Expected: ((a+b)*c)
 
-        // Test Case 2: Expression with multiple operators
         String exp2 = "*+pq-mn";
         System.out.println("\nInput: " + exp2);
         System.out.println("Output: " + optimalApproach(exp2)); 
-        // Expected: ((p+q)*(m-n))
 
-        // Test Case 3: Edge Case (Empty String)
         String exp3 = "";
         System.out.println("\nInput: Empty String");
         System.out.println("Output: " + optimalApproach(exp3)); 
-        // Expected: (empty)
     }
 }
-
-
-/**
- * TC: O(N) where N is the length of the string
- * SC: O(N) for the stack storing intermediate strings
- */
