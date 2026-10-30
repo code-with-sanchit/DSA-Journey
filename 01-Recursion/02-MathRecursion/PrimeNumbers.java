@@ -1,31 +1,28 @@
-// Problem: Check if a number is Prime
-// Iterative: Time O(sqrt(N)), Space O(1) | Recursive: Time O(sqrt(N)), Space O(sqrt(N))
-
 public class PrimeNumbers {
 
-    // 1. Recursive Helper Function
     private static boolean checkPrimeRecursive(int n, int divisor) {
-        // Base case 1: checked all numbers up to sqrt(n)
         if ((long) divisor * divisor > n) {
             return true;
         }
 
-        // Base case 2: found a divisor
         if (n % divisor == 0) {
             return false;
         }
 
-        // Check next number
         return checkPrimeRecursive(n, divisor + 1);
     }
 
-    // Public wrapper for recursive check
+    // Recursive Approach
     public static boolean isPrimeRecursive(int n) {
         if (n <= 1) return false;
         return checkPrimeRecursive(n, 2);
     }
+    /*
+     * Time Complexity: O(sqrt(N))
+     * Space Complexity: O(sqrt(N))
+     */
 
-    // 2. Optimal Iterative Approach (Standard loop method)
+    // Optimal Iterative Approach
     public static boolean isPrimeIterative(int n) {
         if (n <= 1) return false;
 
@@ -36,6 +33,10 @@ public class PrimeNumbers {
         }
         return true;
     }
+    /*
+     * Time Complexity: O(sqrt(N))
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int n1 = 29;
