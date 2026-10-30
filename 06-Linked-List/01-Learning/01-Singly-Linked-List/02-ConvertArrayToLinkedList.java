@@ -26,6 +26,10 @@ class ConvertArrayToLinkedList {
         }
         return head;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     static void printLL(Node head) {
         Node temp = head; 
@@ -46,8 +50,3 @@ class ConvertArrayToLinkedList {
         printLL(optimalApproach(arr2));
     }
 }
-
-/**
- * TC: O(N) where N is the array length
- * SC: O(N) to store the N nodes
- */
