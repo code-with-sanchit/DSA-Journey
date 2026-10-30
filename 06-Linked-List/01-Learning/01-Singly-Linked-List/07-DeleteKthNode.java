@@ -40,6 +40,10 @@ class DeleteKthNode {
         }
         return head;
     }
+    /*
+     * Time Complexity: O(K) where worst case is O(N)
+     * Space Complexity: O(1)
+     */
 
     static void printLL(Node head) {
         Node temp = head; 
@@ -51,31 +55,22 @@ class DeleteKthNode {
     }
 
     public static void main(String[] args) {
-        // Test Case 1: Delete middle node (K = 2)
         Node head1 = new Node(5);
         head1.next = new Node(10);
         head1.next.next = new Node(15);
         System.out.println("Original List: 5 -> 10 -> 15 -> null");
         System.out.println("Deleting K = 2:");
-        printLL(optimalApproach(head1, 2)); // Expected: 5 -> 15 -> null
+        printLL(optimalApproach(head1, 2));
 
-        // Test Case 2: Delete first node (K = 1)
         Node head2 = new Node(5);
         head2.next = new Node(10);
         System.out.println("\nOriginal List: 5 -> 10 -> null");
         System.out.println("Deleting K = 1:");
-        printLL(optimalApproach(head2, 1)); // Expected: 10 -> null
+        printLL(optimalApproach(head2, 1));
 
-        // Test Case 3: K is larger than the list length (Edge Case)
         Node head3 = new Node(5);
         System.out.println("\nOriginal List: 5 -> null");
         System.out.println("Deleting K = 5:");
-        printLL(optimalApproach(head3, 5)); // Expected: 5 -> null (no change)
+        printLL(optimalApproach(head3, 5));
     }
 }
-
-
-/**
- * TC: O(K) which in the worst case is O(N) if K is the last node
- * SC: O(1) because we use no extra memory
- */
