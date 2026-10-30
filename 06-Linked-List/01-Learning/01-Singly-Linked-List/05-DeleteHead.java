@@ -20,6 +20,10 @@ class DeleteHead {
         }
         return head.next;
     }
+    /*
+     * Time Complexity: O(1)
+     * Space Complexity: O(1)
+     */
 
     static void printLL(Node head) {
         Node temp = head; 
@@ -31,7 +35,6 @@ class DeleteHead {
     }
 
     public static void main(String[] args) {
-        // Test Case 1: Normal List
         Node head1 = new Node(5);
         head1.next = new Node(10);
         head1.next.next = new Node(15);
@@ -41,7 +44,6 @@ class DeleteHead {
         System.out.println("After deleting head:");
         printLL(head1);
 
-        // Test Case 2: Single Node
         System.out.println("\nOriginal List (Single Node):");
         Node head2 = new Node(100);
         printLL(head2);
@@ -49,7 +51,6 @@ class DeleteHead {
         System.out.println("After deleting head:");
         printLL(head2);
 
-        // Test Case 3: Empty List
         System.out.println("\nOriginal List (Empty):");
         Node head3 = null;
         printLL(head3);
@@ -58,8 +59,3 @@ class DeleteHead {
         printLL(head3);
     }
 }
-
-/**
- * TC: O(1) because we only change one pointer
- * SC: O(1) because we use no extra space
- */
