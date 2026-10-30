@@ -28,6 +28,10 @@ class DeleteTail {
 
         return head;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     static void printLL(Node head) {
         Node temp = head; 
@@ -39,7 +43,6 @@ class DeleteTail {
     }
 
     public static void main(String[] args) {        
-        // Test Case 1: Normal List
         Node head1 = new Node(5);
         head1.next = new Node(10);
         head1.next.next = new Node(15);
@@ -49,7 +52,6 @@ class DeleteTail {
         System.out.println("After deleting tail:");
         printLL(head1);
 
-        // Test Case 2: Single Node
         System.out.println("\nOriginal List (Single Node):");
         Node head2 = new Node(100);
         printLL(head2);
@@ -57,19 +59,11 @@ class DeleteTail {
         System.out.println("After deleting tail:");
         printLL(head2);
 
-        // Test Case 3: Empty List
         System.out.println("\nOriginal List (Empty):");
         Node head3 = null;
         printLL(head3);
         head3 = optimalApproach(head3);
         System.out.println("After deleting tail:");
         printLL(head3);
-
     }
 }
-
-
-/**
- * TC: O(N) where N is the length of the list
- * SC: O(1) because we use no extra memory
- */
