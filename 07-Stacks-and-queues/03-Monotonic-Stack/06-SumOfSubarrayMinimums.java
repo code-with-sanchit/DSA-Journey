@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 class SumOfSubarrayMinimums {
 
+    // Brute Force Approach
     static int bruteForce(int[] arr) {
         if (arr == null || arr.length == 0) return 0; 
 
@@ -19,6 +20,10 @@ class SumOfSubarrayMinimums {
         }
         return totalSum;
     }
+    /*
+     * Time Complexity: O(N^2)
+     * Space Complexity: O(1)
+     */
 
     static int[] findNSE(int[] arr) {
         int n = arr.length; 
@@ -50,6 +55,7 @@ class SumOfSubarrayMinimums {
         return pse;
     }
 
+    // Optimal Approach
     static int optimalApproach(int[] arr) {
         if (arr == null || arr.length == 0) return 0;
 
@@ -57,7 +63,6 @@ class SumOfSubarrayMinimums {
         int[] nse = findNSE(arr);
         int[] pse = findPSE(arr);
 
-        // FIX: Changed from int to long to prevent compilation error
         long totalSum = 0; 
         int mod = (int)(1e9 + 7);
 
@@ -69,25 +74,24 @@ class SumOfSubarrayMinimums {
 
             long value = (totalSubarrays * arr[i]) % mod;
             
-            // This line now works perfectly because totalSum is a long
             totalSum = (totalSum + value) % mod;
         }
         
         return (int)totalSum;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     public static void main(String[] args) {
-        // Test Case 1: Standard Array
         int[] arr1 = {3, 1, 2, 4};
         System.out.println("Array: " + Arrays.toString(arr1));
         System.out.println("Brute Force: " + bruteForce(arr1));
         System.out.println("Optimal:     " + optimalApproach(arr1)); 
-        // Expected: 17
 
-        // Test Case 2: Array with duplicate numbers
         int[] arr2 = {11, 81, 94, 43, 3};
         System.out.println("\nArray: " + Arrays.toString(arr2));
         System.out.println("Optimal:     " + optimalApproach(arr2)); 
-        // Expected: 444
     }
 }
