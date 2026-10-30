@@ -1,31 +1,28 @@
-// Problem: Check if a String is a Palindrome
-// Iterative: Time O(N), Space O(1) | Recursive: Time O(N), Space O(N)
-
 public class CheckPalindromeString {
 
-    // 1. Recursive Helper Function
     private static boolean checkRecursive(String str, int start, int end) {
-        // Base case: pointers have met or crossed
         if (start >= end) {
             return true;
         }
 
-        // Characters at current positions do not match
         if (str.charAt(start) != str.charAt(end)) {
             return false;
         }
 
-        // Move pointers inward
         return checkRecursive(str, start + 1, end - 1);
     }
 
-    // Public wrapper for clean recursive usage
+    // Recursive Approach
     public static boolean isPalindromeRecursive(String str) {
         if (str == null) return false;
         return checkRecursive(str, 0, str.length() - 1);
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
-    // 2. Optimal Iterative Approach (Two-Pointer Loop)
+    // Optimal Iterative Approach
     public static boolean isPalindromeIterative(String str) {
         if (str == null) return false;
 
@@ -41,6 +38,10 @@ public class CheckPalindromeString {
         }
         return true;
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         String s1 = "madam";
