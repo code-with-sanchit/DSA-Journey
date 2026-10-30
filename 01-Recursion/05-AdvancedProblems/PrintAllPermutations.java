@@ -1,15 +1,8 @@
-// Problem: Print All Permutations of an Array
-// Approach 1 (Visited Array): Time O(N! * N), Space O(N) extra space
-// Approach 2 (In-Place Swap - Optimal): Time O(N! * N), Space O(1) extra space (excluding recursion stack)
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class PrintAllPermutations {
 
-    // -------------------------------------------------------------
-    // Approach 1: Using a visited/frequency array
-    // -------------------------------------------------------------
     private static void permuteVisitedHelper(int[] arr, boolean[] visited, List<Integer> current, List<List<Integer>> result) {
         if (current.size() == arr.length) {
             result.add(new ArrayList<>(current));
@@ -23,25 +16,25 @@ public class PrintAllPermutations {
 
                 permuteVisitedHelper(arr, visited, current, result);
 
-                // Backtrack
                 current.remove(current.size() - 1);
                 visited[i] = false;
             }
         }
     }
 
+    // Approach 1: Using Visited Array
     public static List<List<Integer>> permuteUsingVisited(int[] arr) {
         List<List<Integer>> result = new ArrayList<>();
         boolean[] visited = new boolean[arr.length];
         permuteVisitedHelper(arr, visited, new ArrayList<>(), result);
         return result;
     }
+    /*
+     * Time Complexity: O(N! * N)
+     * Space Complexity: O(N)
+     */
 
-    // -------------------------------------------------------------
-    // Approach 2: Optimal In-Place Swap (No extra visited array)
-    // -------------------------------------------------------------
     private static void permuteSwapHelper(int[] arr, int start, List<List<Integer>> result) {
-        // Base case: all positions are fixed
         if (start == arr.length) {
             List<Integer> current = new ArrayList<>();
             for (int num : arr) {
@@ -52,9 +45,9 @@ public class PrintAllPermutations {
         }
 
         for (int i = start; i < arr.length; i++) {
-            swap(arr, start, i);                     // 1. Choose
-            permuteSwapHelper(arr, start + 1, result); // 2. Explore
-            swap(arr, start, i);                     // 3. Backtrack (Un-choose)
+            swap(arr, start, i);
+            permuteSwapHelper(arr, start + 1, result);
+            swap(arr, start, i);
         }
     }
 
@@ -64,11 +57,16 @@ public class PrintAllPermutations {
         arr[j] = temp;
     }
 
+    // Approach 2: Optimal In-Place Swap
     public static List<List<Integer>> permuteOptimal(int[] arr) {
         List<List<Integer>> result = new ArrayList<>();
         permuteSwapHelper(arr, 0, result);
         return result;
     }
+    /*
+     * Time Complexity: O(N! * N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3};
