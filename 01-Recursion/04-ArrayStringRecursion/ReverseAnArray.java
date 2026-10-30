@@ -1,33 +1,30 @@
-// Problem: Reverse an Array
-// Iterative: Time O(N), Space O(1) | Recursive: Time O(N), Space O(N)
-
 import java.util.Arrays;
 
 public class ReverseAnArray {
 
-    // 1. Recursive Helper Function
     private static void reverseRecursiveHelper(int[] arr, int start, int end) {
-        // Base case: pointers meet or cross
         if (start >= end) {
             return;
         }
 
-        // Swap elements at start and end
         int temp = arr[start];
         arr[start] = arr[end];
         arr[end] = temp;
 
-        // Recursive call with inward pointers
         reverseRecursiveHelper(arr, start + 1, end - 1);
     }
 
-    // Public wrapper for clean recursive usage
+    // Recursive Approach
     public static void reverseRecursive(int[] arr) {
         if (arr == null || arr.length <= 1) return;
         reverseRecursiveHelper(arr, 0, arr.length - 1);
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
-    // 2. Optimal Iterative Approach (Two-Pointer Loop)
+    // Optimal Iterative Approach
     public static void reverseIterative(int[] arr) {
         if (arr == null || arr.length <= 1) return;
 
@@ -43,6 +40,10 @@ public class ReverseAnArray {
             end--;
         }
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         int[] arr1 = {1, 2, 3, 4, 5};
