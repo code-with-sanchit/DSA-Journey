@@ -1,11 +1,5 @@
 import java.util.Stack;
 
-/***
- * * TC: O(N) where N is the length of the string
- * SC: O(N) for the stack and the string builders
- */
- 
- 
 class InfixToPrefix {
 
     static int priority(char ch) {
@@ -20,13 +14,11 @@ class InfixToPrefix {
         }
     }
 
-    
     static String optimalApproach(String exp) {
         if (exp == null || exp.length() == 0) {
             return "";
         }
 
-        // Step 1: Reverse the string and swap brackets
         StringBuilder reversedExp = new StringBuilder();
         for (int i = exp.length() - 1; i >= 0; i--) {
             char c = exp.charAt(i);
@@ -39,7 +31,6 @@ class InfixToPrefix {
             }
         }
 
-        // Step 2: Modified Infix to Postfix
         StringBuilder result = new StringBuilder();
         Stack<Character> stack = new Stack<>();
 
@@ -58,7 +49,6 @@ class InfixToPrefix {
                     stack.pop(); 
                 }
             } else {
-                // Fixed spelling: priority(c)
                 while (!stack.isEmpty() && priority(c) < priority(stack.peek())) {
                     result.append(stack.pop());
                 }
@@ -67,19 +57,34 @@ class InfixToPrefix {
                 }
                 stack.push(c);
             }
-        } // The for loop ends here
+        }
 
-        // The method is still open, so this while loop is safely inside it
         while (!stack.isEmpty()) {
             result.append(stack.pop());
         }
 
         return result.reverse().toString();
-    } // The optimalApproach method ends here
+    }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     public static void main(String[] args) {
-        String exp1 = "x+y*z/w+u";
+        String exp1 = "(a+b)*c";
         System.out.println("Input: " + exp1);
         System.out.println("Output: " + optimalApproach(exp1)); 
+
+        String exp2 = "(p+q)*(m-n)";
+        System.out.println("\nInput: " + exp2);
+        System.out.println("Output: " + optimalApproach(exp2)); 
+
+        String exp3 = "a+b*(c^d-e)^(f+g*h)-i";
+        System.out.println("\nInput: " + exp3);
+        System.out.println("Output: " + optimalApproach(exp3)); 
+
+        String exp4 = "";
+        System.out.println("\nInput: Empty String");
+        System.out.println("Output: " + optimalApproach(exp4)); 
     }
-} 
+}
