@@ -1,19 +1,18 @@
-// Problem: Print N to 1 using recursion (Tail Recursion)
-// Time: O(N) | Space: O(N) (call stack)
-
 class PrintNumbersNTo1 {
 
     public static void printNumbers(int n) {
-        // Base case: stop when n reaches 0 or less
         if (n <= 0) {
             return;
         }
 
-        // Print first, call later -> prints N down to 1
         System.out.print(n + " ");
 
         printNumbers(n - 1);
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(N)
+     */
 
     public static void main(String[] args) {
         int n = 5;
