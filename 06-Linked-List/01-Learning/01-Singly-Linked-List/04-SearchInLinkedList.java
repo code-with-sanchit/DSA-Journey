@@ -1,4 +1,3 @@
-
 class Node {
     int data;
     Node next;
@@ -14,8 +13,7 @@ class Node {
     }
 }
 
-
-class SearchInLinkedList{
+class SearchInLinkedList {
 
     static int optimalApproach(Node head, int target) {
         Node temp = head; 
@@ -28,6 +26,10 @@ class SearchInLinkedList{
         }
         return 0; 
     }
+    /*
+     * Time Complexity: O(N)
+     * Space Complexity: O(1)
+     */
 
     public static void main(String[] args) {
         Node head = new Node(5);
@@ -35,12 +37,7 @@ class SearchInLinkedList{
         head.next.next = new Node(15); 
 
         System.out.println("Linked List: 5 -> 10 -> 15 -> null");
-        System.out.println("Search for 10: " + optimalApproach(head, 10)); // Expected: 1
-        System.out.println("Search for 20: " + optimalApproach(head, 20)); // Expected: 0
+        System.out.println("Search for 10: " + optimalApproach(head, 10));
+        System.out.println("Search for 20: " + optimalApproach(head, 20));
     }
 }
-
-/**
- * TC: O(N) in the worst case (if target is at the end or not found)
- * SC: O(1) no extra memory used
- */
